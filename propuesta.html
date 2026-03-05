@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>La pregunta final 💍</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#ffe6f0;
+padding-top:120px;
+overflow:hidden;
+}
+
+h1{
+color:#d63384;
+font-size:40px;
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+margin:10px;
+border:none;
+border-radius:10px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff1a66;
+}
+
+#no{
+position:absolute;
+}
+
+#resultado{
+display:none;
+margin-top:40px;
+}
+
+#resultado img{
+width:350px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* hearts */
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:24px;
+animation:fall linear;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(100vh);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>¿Quieres casarte conmigo otra vez? 💍</h1>
+
+<button onclick="respuesta()">Sí</button>
+<button onclick="respuesta()">Siempre Sí ❤️</button>
+<button id="no" onmouseover="mover()">No</button>
+
+<div id="resultado">
+
+<h2>AYYYY! Elegiste la mejor respuesta 😍</h2>
+
+<p>Nuestro amor es para siempre ❤️</p>
+
+<img src="photo2.jpg">
+
+</div>
+
+<audio id="musica">
+<source src="perfect.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function respuesta(){
+
+document.getElementById("resultado").style.display="block";
+
+/* start music */
+
+document.getElementById("musica").play();
+
+/* start hearts */
+
+setInterval(crearCorazon,200);
+
+}
+
+function mover(){
+
+var boton=document.getElementById("no");
+
+var x=Math.random()*window.innerWidth;
+var y=Math.random()*window.innerHeight;
+
+boton.style.left=x+"px";
+boton.style.top=y+"px";
+
+}
+
+function crearCorazon(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+heart.style.animationName="fall";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},5000);
+
+}
+
+</script>
+
+</body>
+</html>
